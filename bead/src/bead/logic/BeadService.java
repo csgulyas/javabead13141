@@ -167,10 +167,11 @@ public class BeadService implements IBeadService {
     private List<String> PrepareOutput() {
         List<String> out = new ArrayList<>();
         
+        out.add("Épületek:");
         for (Building b : street.Buildings.values()) {
             if (b instanceof House) {
                 House h = (House)b;
-                out.add("lakohaz\t" + h.BuildingNumber + " " + h.GetResidentsCount());
+                out.add("Lakóhaz\tszám: " + h.BuildingNumber + ", lakók száma: " + h.GetResidentsCount());
             }
             else {
                 Shop s = (Shop)b;
@@ -178,18 +179,19 @@ public class BeadService implements IBeadService {
                 for (Person p : s.Staff) {
                     staff += " " + p.Name;
                 }
-                out.add("uzlet\t" + s.BuildingNumber + " " + s.Balance + " " + s.TotalStaff + staff);
+                out.add("Üzlet\tszám: " + s.BuildingNumber + ", kassza: " + s.Balance + ", dolgozók: " + s.TotalStaff +"db =>" + staff);
             }
         }
         out.add("");
+        out.add("Emberek:");
         for (Person p : street.People.values()) {
-            String nem = p.IsMale ? "ferfi" : "no";
+            String nem = p.IsMale ? "férfi" : "nő\t";
             if (p instanceof Adult) {
-                out.add("ember\t" + p.Name + "\t" + nem + "\t" + p.Age + " " + p.BuildingNumber + " " + p.Wallet);
+                out.add("Felnőtt\t" + p.Name + "\tnem: " + nem + "\téletkor: " + p.Age + ", most itt van: " + p.BuildingNumber + ", pénztárca: " + p.Wallet);
             }
             else {
                 Child c = (Child)p;
-                out.add("gyermek\t" + p.Name + "\t" + nem + "\t" + p.Age + " " + p.BuildingNumber + " " + p.Wallet + " " + c.Father.Name + " " + c.Mother.Name);
+                out.add("Gyermek\t" + p.Name + "\tnem: " + nem + "\téletkor: " + p.Age + ", most itt van: " + p.BuildingNumber + ", pénztárca: " + p.Wallet + ", apja: " + c.Father.Name + ", anyja: " + c.Mother.Name);
             }
         }       
         
