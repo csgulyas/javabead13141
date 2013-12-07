@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Programozási nyelvek JAVA 2013-14/1 beadandó
+${licensePrefix}Gulyás Csaba ${licensePrefix}
+<#if licenseLast??>
+${licenseLast}
+</#if>
