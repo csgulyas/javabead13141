@@ -26,6 +26,11 @@ public class Bead {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        if (args.length < 1) {
+            System.out.println("Hiányzó input fájl argumentum");
+            System.exit(1);
+        }
+        
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
         IFileManagerService fmSvc = new FileManagerService();
         Street street = fmSvc.Beolvas(args[0]);

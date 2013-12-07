@@ -41,6 +41,8 @@ public class FileManagerService implements IFileManagerService {
 
         } catch (IOException e) {
             e.printStackTrace();
+            System.err.println("Fájl olvasás hiba");
+            System.exit(1);
         } 
         
         return street;
